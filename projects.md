@@ -1,6 +1,6 @@
 ---
-layout: page
-title: Projects
+layout: default
+title: Projects & Implementations
 permalink: /projects/
 ---
 
