@@ -7,7 +7,7 @@ layout: default
 # Monsur Abdullah
 **Potential Systems Researcher & Engineer | MLSys, JAX/XLA, & High-Performance Deep Learning**
 
-[GitHub]() | [LinkedIn](linkedin.com/in/moonsur161) | [arXiv/Draft]() | [Email](monsur.ab.161@gmail.com)
+[GitHub]() | [Substack](substack.com/@monsur4u) | [X](x.com/Monsur4u) | [Email](monsur.ab.161@gmail.com)
 
 ---
 
