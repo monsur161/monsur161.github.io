@@ -26,3 +26,6 @@ Currently, I am actively seeking fully funded PhD or Pre-Doctoral opportunities 
 * **Frameworks & Compilers:** JAX, XLA, PyTorch, NumPy, custom autodiff mechanics.
 * **Hardware & Systems:** High-Performance Computing (HPC), mixed-precision optimization (`bfloat16`/`float32`), Tensor Core utilization, memory fragmentation defense.
 * **Low-Level Engineering:** Advanced Python internals (generators, closures, custom decorators), Linux kernel polling, fault-tolerant I/O, atomic file operations, OS-level page caching (`np.memmap`).
+
+---
+*Last updated on {{ site.time | date: "%d/%m/%Y %H:%M" }}*
