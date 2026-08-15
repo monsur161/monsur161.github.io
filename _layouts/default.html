@@ -26,6 +26,17 @@
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
+        <!-- Expandable Navigation Menu -->
+        <details style="margin-top: 20px; margin-bottom: 20px;">
+          <summary style="cursor: pointer; font-weight: bold; font-size: 1.1em; border-bottom: 1px solid #eaecef; padding-bottom: 5px;">Directory</summary>
+          <ul style="list-style: none; padding-left: 10px; margin-top: 10px; line-height: 1.8;">
+            <li><a href="{{ "/" | absolute_url }}">Home</a></li>
+            <li><a href="{{ "/projects/" | absolute_url }}">Research & Engineering</a></li>
+            <li><a href="{{ "/blog/" | absolute_url }}">Algorithmic Log</a></li>
+            <li><a href="{{ "/publications/" | absolute_url }}">Publications</a></li>
+            <li><a href="{{ "/cv/" | absolute_url }}">Curriculum Vitae</a></li>
+          </ul>
+        </details>
 
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
