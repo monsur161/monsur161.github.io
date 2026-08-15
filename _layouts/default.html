@@ -5,76 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Custom Title Override -->
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <!-- Clean Tab Title -->
+    <title>{% if page.title %}{{ page.title }} | {% endif %}Monsur Abdullah</title>
     
-    <!-- Disable the default SEO plugin title to prevent duplicates -->
     {% seo title=false %}
-    
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
     
-    <!-- MathJax for LaTeX Rendering -->
+    <!-- Dark Mode & Layout Shift CSS -->
+    <style>
+      body.dark-mode { background-color: #121212; color: #e0e0e0; }
+      body.dark-mode .wrapper { background-color: #121212; }
+      body.dark-mode #side-drawer { background-color: #1a1a1a !important; border-right: 1px solid #333; }
+      body.dark-mode #menu-toggle { background: #1a1a1a !important; color: #e0e0e0; border-color: #333 !important; }
+      body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p, body.dark-mode li { color: #e0e0e0 !important; }
+      body.dark-mode a { color: #58a6ff !important; }
+      body.dark-mode #side-drawer a { color: #e0e0e0 !important; }
+      body.dark-mode summary { color: #e0e0e0 !important; }
+      body.dark-mode code, body.dark-mode pre { background-color: #2d2d2d !important; color: #ccc !important; border-color: #444 !important; }
+      body.dark-mode header p { color: #aaa !important; }
+      body.dark-mode h3[style*="border-bottom"] { border-bottom-color: #333 !important; }
+      body.dark-mode hr { border-color: #333 !important; }
+      
+      /* Centers the text when the left sidebar is hidden */
+      .centered-wrapper { max-width: 800px; margin: 0 auto; padding-top: 20px; float: none !important; width: 100% !important; }
+    </style>
+    
+    <!-- MathJax -->
     <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        }
-      };
+      window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
-    <!-- Hamburger Menu Icon -->
+    <!-- Mobile-Safe Floating Menu (100% height instead of 100vh) -->
     <div id="menu-toggle" style="position: fixed; top: 15px; left: 15px; z-index: 1000; cursor: pointer; font-size: 24px; background: #ffffff; border: 1px solid #ddd; padding: 5px 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
       ☰
     </div>
 
-    <!-- Sliding Sidebar Drawer -->
-    <div id="side-drawer" style="position: fixed; top: 0; left: -350px; width: 300px; height: 100vh; background: #ffffff; z-index: 999; transition: left 0.3s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.15); padding: 70px 20px 20px; overflow-y: auto;">
-      
+    <div id="side-drawer" style="position: fixed; top: 0; left: -350px; width: 300px; height: 100%; background: #ffffff; z-index: 999; transition: left 0.3s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.15); padding: 70px 20px 20px; overflow-y: auto;">
       <h3 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;">Directory</h3>
       <ul style="list-style: none; padding-left: 0; line-height: 2.2;">
-        <li><a href="{{ "/" | absolute_url }}" style="text-decoration: none; color: #333;">🏠 Home</a></li>
-        <li><a href="{{ "/projects/" | absolute_url }}" style="text-decoration: none; color: #333;">⚙️ Research & Engineering</a></li>
+        <li><a href="{{ "/" | absolute_url }}" style="text-decoration: none;">🏠 Home</a></li>
+        <li><a href="{{ "/projects/" | absolute_url }}" style="text-decoration: none;">⚙️ Research & Engineering</a></li>
         
-        <!-- Interactive Nested Blog Menu -->
         <li>
           <details>
-            <summary style="cursor: pointer; color: #333; font-weight: normal;">📝 Algorithmic & Engineering Logs</summary>
+            <summary style="cursor: pointer; font-weight: normal;">📝 Algorithmic & Engineering Logs</summary>
             <ul style="list-style: none; padding-left: 18px; line-height: 1.8; margin-top: 5px;">
-              
-              <!-- LLM Series -->
               <li>
                 <details>
-                  <summary style="cursor: pointer; color: #555; font-size: 0.95em;">🧠 Anatomy of an LLM</summary>
+                  <summary style="cursor: pointer; font-size: 0.95em;">🧠 Anatomy of an LLM</summary>
                   <ul style="list-style: none; padding-left: 15px; font-size: 0.9em; margin-top: 3px;">
                     {% for post in site.categories.llm reversed %}
-                      <li><a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #666;">{{ post.title }}</a></li>
+                      <li><a href="{{ post.url | relative_url }}" style="text-decoration: none;">{{ post.title }}</a></li>
                     {% endfor %}
                   </ul>
                 </details>
               </li>
-
             </ul>
           </details>
         </li>
-
-        <li><a href="{{ "/publications/" | absolute_url }}" style="text-decoration: none; color: #333;">📄 Publications</a></li>
+        <li><a href="{{ "/publications/" | absolute_url }}" style="text-decoration: none;">📄 Publications</a></li>
       </ul>
-      
+
+      <!-- Dark Mode Toggle -->
+      <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+        <button id="theme-toggle" style="width: 100%; padding: 10px; cursor: pointer; background: #333; color: #fff; border: none; border-radius: 5px; font-weight: bold;">🌙 Dark Mode</button>
+      </div>
     </div>
 
-    <!-- Dark Background Overlay -->
-    <div id="drawer-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); z-index: 998;"></div>
+    <div id="drawer-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998;"></div>
 
-    <!-- Drawer Logic -->
     <script>
       const toggleBtn = document.getElementById('menu-toggle');
       const sideDrawer = document.getElementById('side-drawer');
       const overlay = document.getElementById('drawer-overlay');
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const body = document.body;
 
       function toggleNav() {
         if (sideDrawer.style.left === '0px') {
@@ -87,40 +94,63 @@
       }
 
       toggleBtn.addEventListener('click', toggleNav);
-      overlay.addEventListener('click', toggleNav); // Clicking outside the menu closes it
+      overlay.addEventListener('click', toggleNav);
+
+      // Bridges Dark Mode to the Giscus Iframe
+      function setGiscusTheme(theme) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, 'https://giscus.app');
+      }
+
+      // Check LocalStorage on Load
+      if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggleBtn.innerText = '☀️ Light Mode';
+        themeToggleBtn.style.background = '#ddd';
+        themeToggleBtn.style.color = '#333';
+      }
+
+      // Toggle Listener
+      themeToggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        themeToggleBtn.innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        themeToggleBtn.style.background = isDark ? '#ddd' : '#333';
+        themeToggleBtn.style.color = isDark ? '#333' : '#fff';
+        
+        setGiscusTheme(isDark ? 'dark' : 'light');
+      });
     </script>
+
     <div class="wrapper">
+      
+      <!-- Logic to only show the Header (Left Sidebar) on the Homepage -->
+      {% if page.url == '/' or page.url == '/index.html' %}
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-        
         {% if site.logo %}
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
-
         <p>{{ site.description | default: site.github.project_tagline }}</p>
-        
-
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
-
         {% if site.github.is_user_page %}
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
-
-        {% if site.show_downloads %}
-        <ul class="downloads">
-          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-        </ul>
-        {% endif %}
       </header>
       <section>
+      {% else %}
+      <!-- Replaces the layout with a centered, distraction-free container for posts -->
+      <section class="centered-wrapper">
+      {% endif %}
 
       {{ content }}
 
-      <!-- Render Giscus Comments Only on Blog Posts -->
+      <!-- Giscus Integration with specific Repository IDs -->
       {% if page.layout == "post" or page.comments %}
       <hr style="margin-top: 40px; margin-bottom: 30px;">
       <div id="comments">
@@ -134,7 +164,7 @@
                 data-reactions-enabled="1"
                 data-emit-metadata="0"
                 data-input-position="bottom"
-                data-theme="light"
+                data-theme="preferred_color_scheme"
                 data-lang="en"
                 crossorigin="anonymous"
                 async>
@@ -143,12 +173,16 @@
       {% endif %}
 
       </section>
+      
+      <!-- Hide standard footer on posts to keep it clean -->
+      {% if page.url == '/' or page.url == '/index.html' %}
       <footer>
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
+      {% endif %}
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
   </body>
