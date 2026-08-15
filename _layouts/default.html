@@ -17,6 +17,54 @@
     <![endif]-->
   </head>
   <body>
+    <!-- Hamburger Menu Icon -->
+    <div id="menu-toggle" style="position: fixed; top: 15px; left: 15px; z-index: 1000; cursor: pointer; font-size: 24px; background: #ffffff; border: 1px solid #ddd; padding: 5px 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      ☰
+    </div>
+
+    <!-- Sliding Sidebar Drawer -->
+    <div id="side-drawer" style="position: fixed; top: 0; left: -350px; width: 300px; height: 100vh; background: #ffffff; z-index: 999; transition: left 0.3s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.15); padding: 70px 20px 20px; overflow-y: auto;">
+      
+      <h3 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;">Directory</h3>
+      <ul style="list-style: none; padding-left: 0; line-height: 2.2;">
+        <li><a href="{{ "/" | absolute_url }}" style="text-decoration: none; color: #333;">🏠 Home</a></li>
+        <li><a href="{{ "/projects/" | absolute_url }}" style="text-decoration: none; color: #333;">⚙️ Research & Engineering</a></li>
+        <li><a href="{{ "/blog/" | absolute_url }}" style="text-decoration: none; color: #333;">📝 Algorithmic Log</a></li>
+        <li><a href="{{ "/publications/" | absolute_url }}" style="text-decoration: none; color: #333;">📄 Publications</a></li>
+      </ul>
+
+      <!-- Automated History Section (Like Gemini Chats) -->
+      <h3 style="margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Recent Logs</h3>
+      <ul style="list-style: none; padding-left: 0; line-height: 1.8; font-size: 0.95em;">
+        {% for post in site.posts limit:5 %}
+          <li><a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #555;">💬 {{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+
+    <!-- Dark Background Overlay -->
+    <div id="drawer-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); z-index: 998;"></div>
+
+    <!-- Drawer Logic -->
+    <script>
+      const toggleBtn = document.getElementById('menu-toggle');
+      const sideDrawer = document.getElementById('side-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+
+      function toggleNav() {
+        if (sideDrawer.style.left === '0px') {
+          sideDrawer.style.left = '-350px';
+          overlay.style.display = 'none';
+        } else {
+          sideDrawer.style.left = '0px';
+          overlay.style.display = 'block';
+        }
+      }
+
+      toggleBtn.addEventListener('click', toggleNav);
+      overlay.addEventListener('click', toggleNav); // Clicking outside the menu closes it
+    </script>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -26,17 +74,7 @@
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
-        <!-- Expandable Navigation Menu -->
-        <details style="margin-top: 20px; margin-bottom: 20px;">
-          <summary style="cursor: pointer; font-weight: bold; font-size: 1.1em; border-bottom: 1px solid #eaecef; padding-bottom: 5px;">Directory</summary>
-          <ul style="list-style: none; padding-left: 10px; margin-top: 10px; line-height: 1.8;">
-            <li><a href="{{ "/" | absolute_url }}">Home</a></li>
-            <li><a href="{{ "/projects/" | absolute_url }}">Research & Engineering</a></li>
-            <li><a href="{{ "/blog/" | absolute_url }}">Algorithmic Log</a></li>
-            <li><a href="{{ "/publications/" | absolute_url }}">Publications</a></li>
-            <li><a href="{{ "/cv/" | absolute_url }}">Curriculum Vitae</a></li>
-          </ul>
-        </details>
+        
 
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
