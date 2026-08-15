@@ -3,6 +3,7 @@ layout: post
 title: "Anatomy of an LLM: From First Principles to Edge Silicon"
 date: 2026-08-16
 comments: true
+categories: [llm]
 ---
 
 > *"You are not the only one cursed with knowledge."*  
