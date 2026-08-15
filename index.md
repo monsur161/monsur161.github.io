@@ -18,8 +18,6 @@ My research lies at the intersection of deep learning and hardware architecture.
 
 Currently, I am actively seeking fully funded PhD or Pre-Doctoral opportunities for Fall 2027 in labs focused on High-Performance Computing (HPC) and ML Compilers.
 
-### [View my Research & Engineering Projects](/projects/)
-
 ---
 
 ## Technical Expertise
