@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anatomy of an LLM: From First Principles to Edge Silicon"
+title: "Introduction"
 date: 2026-08-16
 comments: true
 categories: [llm]
