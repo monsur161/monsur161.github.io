@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Projects & Implementations
+title: Research & Engineering Projects
 permalink: /projects/
 ---
 
