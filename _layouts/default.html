@@ -39,16 +39,42 @@
       <ul style="list-style: none; padding-left: 0; line-height: 2.2;">
         <li><a href="{{ "/" | absolute_url }}" style="text-decoration: none; color: #333;">🏠 Home</a></li>
         <li><a href="{{ "/projects/" | absolute_url }}" style="text-decoration: none; color: #333;">⚙️ Research & Engineering</a></li>
-        <li><a href="{{ "/blog/" | absolute_url }}" style="text-decoration: none; color: #333;">📝 Algorithmic Log</a></li>
-        <li><a href="{{ "/publications/" | absolute_url }}" style="text-decoration: none; color: #333;">📄 Publications</a></li>
-      </ul>
+        
+        <!-- Interactive Nested Blog Menu -->
+        <li>
+          <details>
+            <summary style="cursor: pointer; color: #333; font-weight: normal;">📝 Algorithmic & Engineering Logs</summary>
+            <ul style="list-style: none; padding-left: 18px; line-height: 1.8; margin-top: 5px;">
+              
+              <!-- LLM Series -->
+              <li>
+                <details>
+                  <summary style="cursor: pointer; color: #555; font-size: 0.95em;">🧠 Anatomy of an LLM</summary>
+                  <ul style="list-style: none; padding-left: 15px; font-size: 0.9em; margin-top: 3px;">
+                    {% for post in site.categories.llm reversed %}
+                      <li><a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #666;">{{ post.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </li>
 
-      <!-- Automated History Section (Like Gemini Chats) -->
-      <h3 style="margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Recent Logs</h3>
-      <ul style="list-style: none; padding-left: 0; line-height: 1.8; font-size: 0.95em;">
-        {% for post in site.posts limit:5 %}
-          <li><a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #555;">💬 {{ post.title }}</a></li>
-        {% endfor %}
+              <!-- Tree & Graph Algorithms Series -->
+              <li style="margin-top: 5px;">
+                <details>
+                  <summary style="cursor: pointer; color: #555; font-size: 0.95em;">🌳 Tree & Graph Traversal</summary>
+                  <ul style="list-style: none; padding-left: 15px; font-size: 0.9em; margin-top: 3px;">
+                    {% for post in site.categories.trees reversed %}
+                      <li><a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #666;">{{ post.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </li>
+
+            </ul>
+          </details>
+        </li>
+
+        <li><a href="{{ "/publications/" | absolute_url }}" style="text-decoration: none; color: #333;">📄 Publications</a></li>
       </ul>
       
     </div>
