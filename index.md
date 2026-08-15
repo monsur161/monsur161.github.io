@@ -9,8 +9,6 @@ layout: default
 
 [Email](mailto:monsur.ab.161@gmail.com) | [GitHub]() | [Substack](https://substack.com/@monsur4u) | [X](https://x.com/Monsur4u)
 
----
-
 ## About Me
 I am a curious and independent researcher and perhaps an upcoming systems engineer with a background in Electrical and Electronic Engineering (EEE), trying to build my specialization in Machine Learning Systems (MLSys) and compiler optimization. 
 
