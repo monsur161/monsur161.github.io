@@ -5,28 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Clean Tab Title -->
     <title>{% if page.title %}{{ page.title }} | {% endif %}Monsur Abdullah</title>
-    
     {% seo title=false %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     
-    <!-- Dark Mode & Layout Shift CSS -->
     <style>
+      /* Dark Mode Base */
       body.dark-mode { background-color: #121212; color: #e0e0e0; }
       body.dark-mode .wrapper { background-color: #121212; }
-      body.dark-mode #side-drawer { background-color: #1a1a1a !important; border-right: 1px solid #333; }
+      body.dark-mode #side-drawer { background-color: #1a1a1a !important; box-shadow: -2px 0 12px rgba(0,0,0,0.5) !important; }
       body.dark-mode #menu-toggle { background: #1a1a1a !important; color: #e0e0e0; border-color: #333 !important; }
       
-      /* Base text elements */
+      /* Text Elements */
       body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode p, body.dark-mode li { color: #e0e0e0 !important; }
-      
-      /* Fix for Bold, Italics, and Blockquotes */
       body.dark-mode strong, body.dark-mode b { color: #ffffff !important; }
       body.dark-mode em, body.dark-mode i { color: #cccccc !important; }
       body.dark-mode blockquote { color: #bbbbbb !important; border-left-color: #444444 !important; }
       
-      /* Links and other elements */
+      /* Links & Misc */
       body.dark-mode a { color: #58a6ff !important; }
       body.dark-mode #side-drawer a { color: #e0e0e0 !important; }
       body.dark-mode summary { color: #e0e0e0 !important; }
@@ -35,23 +31,63 @@
       body.dark-mode h3[style*="border-bottom"] { border-bottom-color: #333 !important; }
       body.dark-mode hr { border-color: #333 !important; }
       
-      /* Centers the text when the left sidebar is hidden */
+      /* Layout */
       .centered-wrapper { max-width: 800px; margin: 0 auto; padding-top: 20px; float: none !important; width: 100% !important; }
+
+      /* Responsive App Drawer Settings */
+      #menu-toggle {
+          position: fixed;
+          top: 15px;
+          z-index: 1000;
+          cursor: pointer;
+          font-size: 24px;
+          background: #ffffff;
+          border: 1px solid #ddd;
+          padding: 5px 12px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      #side-drawer {
+          position: fixed;
+          top: 0;
+          width: 300px;
+          height: 100%;
+          background: #ffffff;
+          z-index: 999;
+          transition: transform 0.3s ease;
+          box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+          padding: 70px 20px 20px;
+          overflow-y: auto;
+      }
+
+      /* Desktop (Left Side) */
+      @media (min-width: 769px) {
+          #menu-toggle { left: 15px; }
+          #side-drawer { left: 0; transform: translateX(-110%); }
+      }
+
+      /* Mobile (Right Side) */
+      @media (max-width: 768px) {
+          #menu-toggle { right: 15px; }
+          #side-drawer { right: 0; transform: translateX(110%); }
+      }
+
+      /* Open State */
+      #side-drawer.open {
+          transform: translateX(0);
+      }
     </style>
     
-    <!-- MathJax -->
     <script>
       window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
-    <!-- Mobile-Safe Floating Menu (100% height instead of 100vh) -->
-    <div id="menu-toggle" style="position: fixed; top: 15px; left: 15px; z-index: 1000; cursor: pointer; font-size: 24px; background: #ffffff; border: 1px solid #ddd; padding: 5px 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      ☰
-    </div>
+    
+    <div id="menu-toggle">☰</div>
 
-    <div id="side-drawer" style="position: fixed; top: 0; left: -350px; width: 300px; height: 100%; background: #ffffff; z-index: 999; transition: left 0.3s ease; box-shadow: 2px 0 12px rgba(0,0,0,0.15); padding: 70px 20px 20px; overflow-y: auto;">
+    <div id="side-drawer">
       <h3 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;">Directory</h3>
       <ul style="list-style: none; padding-left: 0; line-height: 2.2;">
         <li><a href="{{ "/" | absolute_url }}" style="text-decoration: none;">🏠 Home</a></li>
@@ -77,7 +113,6 @@
         <li><a href="{{ "/publications/" | absolute_url }}" style="text-decoration: none;">📄 Publications</a></li>
       </ul>
 
-      <!-- Dark Mode Toggle -->
       <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
         <button id="theme-toggle" style="width: 100%; padding: 10px; cursor: pointer; background: #333; color: #fff; border: none; border-radius: 5px; font-weight: bold;">🌙 Dark Mode</button>
       </div>
@@ -93,26 +128,24 @@
       const body = document.body;
 
       function toggleNav() {
-        if (sideDrawer.style.left === '0px') {
-          sideDrawer.style.left = '-350px';
-          overlay.style.display = 'none';
-        } else {
-          sideDrawer.style.left = '0px';
+        // Now entirely CSS driven
+        sideDrawer.classList.toggle('open');
+        if (sideDrawer.classList.contains('open')) {
           overlay.style.display = 'block';
+        } else {
+          overlay.style.display = 'none';
         }
       }
 
       toggleBtn.addEventListener('click', toggleNav);
       overlay.addEventListener('click', toggleNav);
 
-      // Bridges Dark Mode to the Giscus Iframe
       function setGiscusTheme(theme) {
         const iframe = document.querySelector('iframe.giscus-frame');
         if (!iframe) return;
         iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, 'https://giscus.app');
       }
 
-      // Check LocalStorage on Load
       if (localStorage.getItem('theme') === 'dark') {
         body.classList.add('dark-mode');
         themeToggleBtn.innerText = '☀️ Light Mode';
@@ -120,7 +153,6 @@
         themeToggleBtn.style.color = '#333';
       }
 
-      // Toggle Listener
       themeToggleBtn.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
         const isDark = body.classList.contains('dark-mode');
@@ -135,8 +167,6 @@
     </script>
 
     <div class="wrapper">
-      
-      <!-- Logic to only show the Header (Left Sidebar) on the Homepage -->
       {% if page.url == '/' or page.url == '/index.html' %}
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -153,13 +183,11 @@
       </header>
       <section>
       {% else %}
-      <!-- Replaces the layout with a centered, distraction-free container for posts -->
       <section class="centered-wrapper">
       {% endif %}
 
       {{ content }}
 
-      <!-- Giscus Integration with specific Repository IDs -->
       {% if page.layout == "post" or page.comments %}
       <hr style="margin-top: 40px; margin-bottom: 30px;">
       <div id="comments">
@@ -183,7 +211,6 @@
 
       </section>
       
-      <!-- Hide standard footer on posts to keep it clean -->
       {% if page.url == '/' or page.url == '/index.html' %}
       <footer>
         {% if site.github.is_project_page %}
