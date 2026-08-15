@@ -106,6 +106,28 @@
 
       {{ content }}
 
+      <!-- Render Giscus Comments Only on Blog Posts -->
+      {% if page.layout == "post" or page.comments %}
+      <hr style="margin-top: 40px; margin-bottom: 30px;">
+      <div id="comments">
+        <script src="https://giscus.app/client.js"
+                data-repo="monsur161/monsur161.github.io"
+                data-repo-id="R_kgDOTwMslA"
+                data-category="General"
+                data-category-id="DIC_kwDOTwMslM4DDdwn"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+      {% endif %}
+
       </section>
       <footer>
         {% if site.github.is_project_page %}
