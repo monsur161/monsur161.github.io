@@ -85,6 +85,12 @@
           overflow-x: auto !important;
           overflow-y: hidden !important;
       }
+
+      /* Dynamic Theme Images */
+      .img-dark { display: none; max-width: 100%; height: auto; }
+      .img-light { display: block; max-width: 100%; height: auto; }
+      body.dark-mode .img-dark { display: block; }
+      body.dark-mode .img-light { display: none; }
     </style>
     
     <!-- MathJax -->
