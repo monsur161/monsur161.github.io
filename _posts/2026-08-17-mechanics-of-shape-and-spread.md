@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Mechanics of Shape and Spread: Understanding Distributions"
+short_title: "Understanding Distributions"
 date: 2026-08-17
 comments: true
 categories: [math]
