@@ -19,13 +19,15 @@ A **uniform distribution** of data is like a perfectly flat, rectangular block. 
 within a specific range is equally likely to happen. There are no peaks, no favorites, and no rare extremes. It's just a flat, even
 playing field from a starting point $a$ to an ending point $b$.
 
-![Uniform Distribution](/assets/images/uniform.png)
+<img src="/assets/images/uniform-light.png" class="img-light" alt="Uniform distribution plot">
+<img src="/assets/images/uniform-dark.png" class="img-dark" alt="Uniform distribution plot">
 
 On the other hand, the **normal distribution** is the famous "bell curve." Unlike the flat box, it has a clear favorite: the data
 heavily clusters around a central peak. As we move further away from that center in either direction, the chances of an outcome occurring
 drop off symmetrically, creating sweeping tails. It’s the shape that we see mostly everywhere in nature.
 
-![Standard Normal Distribution](/assets/images/normal.png)
+<img src="/assets/images/normal-light.png" class="img-light" alt="Normal distribution plot">
+<img src="/assets/images/normal-dark.png" class="img-dark" alt="Normal distribution plot">
 
 We have three parameters to count on for each type of distribution:
 
