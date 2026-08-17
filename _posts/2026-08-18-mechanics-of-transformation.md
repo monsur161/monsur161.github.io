@@ -8,7 +8,7 @@ categories: [math]
 ---
 
 > *"If you expect disappointment, then you can never really be disappointed."*
-> - **MJ, Spider-Man: No Way Home**
+> — **MJ, Spider-Man: No Way Home**
 
 ### Scaling a Distribution (Multiplication by a Scalar)
 
