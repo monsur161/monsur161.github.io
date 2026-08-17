@@ -76,6 +76,14 @@
       #side-drawer.open {
           transform: translateX(0);
       }
+
+      /* Fix for MathJax Vertical Stacking with Tags */
+      mjx-container[display="true"] {
+          display: block !important;
+          width: 100% !important;
+          min-width: 100% !important;
+          overflow-x: auto !important;
+      }
     </style>
     
     <!-- MathJax -->
