@@ -8,9 +8,7 @@ categories: [math]
 ---
 
 > *"To understand God's thoughts we must study statistics, for these are the measure of His purpose."*
-> - **Florence Nightingale**
-
-# The Mechanics of Shape and Spread: Understanding Distributions
+> — **Florence Nightingale**
 
 We have two types of distributions in our primary concern. One is the uniform distribution, and the other is the normal distribution.
 Let's discuss them briefly. This discussion is mostly limited to some high-school level mathematics, basic integration, and the basic
