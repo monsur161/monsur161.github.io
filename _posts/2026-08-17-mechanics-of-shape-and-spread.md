@@ -205,7 +205,7 @@ understanding of mathematics from my perspective. So, we can discuss them anytim
 what we learned so far:
 
 | Parameter | Uniform Distribution $U(a, b)$ | Standard Normal Distribution $\mathcal{N}(0, 1)$ |
-| --- | --- | --- |
+| --- | :---: | :---: |
 | **Mean ($\mu$)** | $\frac{a+b}{2}$ | $0$ |
 | **Variance ($\sigma^2$)** | $\frac{(b-a)^2}{12}$ | $1$ |
 | **Standard Deviation ($\sigma$)** | $\frac{b-a}{\sqrt{12}}$ | $1$ |
