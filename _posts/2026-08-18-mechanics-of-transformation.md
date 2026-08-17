@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Mechanics of Transformation: Scaling, Shifting, and Colliding Distributions"
-short_title: "The Mechanics of Transformation"
+short_title: "Scaling, Shifting and Colliding"
 date: 2026-08-18
 comments: true
 categories: [math]
