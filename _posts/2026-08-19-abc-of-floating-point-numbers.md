@@ -17,11 +17,11 @@ of a neural network? This is not something as arbitrary as picking a ball from a
 can be easily calculated on paper. To do this, we need to understand a few data types, precisely float32, float16, and bfloat16. And we'll also
 learn some basic explanation with 8-bit floats (FP8). Let's start.
 
-**Float32 (FP32 - Single Precision):** Denoted as E8M23. It uses 32 bits: 1 for the sign, 8 for the exponent, and 23 for the mantissa (precision).
+**Float32 (FP32 - Single Precision):** Denoted by E8M23. It uses 32 bits: 1 for the sign, 8 for the exponent, and 23 for the mantissa (precision).
 It provides an enormous range of values and pinpoint accuracy, but it takes up 4 bytes of memory per number. When training a model with billions of
 parameters, passing FP32 tensors back and forth starves your GPU's memory bandwidth.
 
-**Float16 (FP16 - Half Precision):** Denoted as E5M10. FP16 uses 16 bits (2 bytes): 1 for the sign, 5 for the exponent, and 10 for the mantissa.
+**Float16 (FP16 - Half Precision):** Denoted by E5M10. FP16 uses 16 bits (2 bytes): 1 for the sign, 5 for the exponent, and 10 for the mantissa.
 It uses half the memory when compared to Float32, but reducing from E8 to E5 drastically lowers the maximum number it can represent.
 
 **Bfloat16 (BF16 - Brain Floating Point):** Denoted by E8M7 and developed by Google Brain. This is a smart alternative to FP16. It also uses 16 bits,
@@ -100,7 +100,7 @@ Our 4 bits can store raw integer values from `0000` (0) to `1111` (15). By apply
 this entire range down by 7:
 
 | Stored Binary | Raw Integer | Formula (Raw - Bias) | Actual Exponent | Multiplier |
-| --- | --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: | :---: |
 | `0001` | 1 | $1 - 7$ | **-6** | $2^{-6}$ |
 | `0110` | 6 | $6 - 7$ | **-1** | $2^{-1}$ |
 | `0111` | 7 | $7 - 7$ | **0** | $2^0 = 1$ |
