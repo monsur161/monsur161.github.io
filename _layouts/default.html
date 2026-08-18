@@ -156,6 +156,24 @@
                   </ul>
                 </details>
               </li>
+              <li style="margin-top: 5px;">
+                <details>
+                  <summary style="cursor: pointer; font-size: 0.95em;">🏗️ Precision of Data</summary>
+                  <ul style="list-style: none; padding-left: 15px; font-size: 0.9em; margin-top: 3px;">
+                    {% for post in site.categories.precision reversed %}
+                      <li>
+                        <a href="{{ post.url | relative_url }}" style="text-decoration: none;">
+                          {% if post.short_title %}
+                            {{ post.short_title }}
+                          {% else %}
+                            {{ post.title }}
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </li>
             </ul>
           </details>
         </li>
