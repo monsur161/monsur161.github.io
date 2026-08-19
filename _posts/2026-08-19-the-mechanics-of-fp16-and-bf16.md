@@ -83,7 +83,9 @@ The main perk of BF16 is its dynamic range. We can drop BF16 directly into a dee
 
 A good choice of mixed precision can be bfloat16 and float32. We'll get both speed and precision. But the combination should be taken care of during the design period, otherwise any flaw in the data flow can contaminate the data stream or cause a bloat in the memory. We'll discuss it later in another blog.
 
-### Optional: The Physical Reality of Data Movement
+---
+
+# Optional: The Physical Reality of Data Movement
 
 When we talk about the bottleneck of data movement during GEMM, it isn't just moving data from the computer's system RAM to the GPU. The true bottleneck is the movement of data entirely **inside the GPU itself**. Before any math happens, our matrices ($X$ and $Y$) are pushed across the motherboard's PCIe bus into the GPU's memory (VRAM). But what happens next?
 
