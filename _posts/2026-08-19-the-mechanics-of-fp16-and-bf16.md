@@ -2,7 +2,7 @@
 layout: post
 title: "The Mechanics of 16 Bit Elements: Speed, Precision, and Trade-Offs"
 short_title: "The Mechanics of FP16 & BF16"
-date: 2026-08-20
+date: 2026-08-19
 comments: true
 categories: [precision]
 ---
