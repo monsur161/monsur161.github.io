@@ -108,4 +108,5 @@ When we earlier referred to "moving 4 elements," here is the exact journey each 
 4. The final result is written back out to VRAM.
 
 **Why 16-bit Floats Dominate This Process**
+
 This internal pipeline connecting VRAM to the math units has a fixed physical width, known as Memory Bandwidth. When we use FP32, every single number acts like a 4-byte block. If you use FP16 or BF16, every number is a 2-byte block. By switching to 16-bit data types, we instantly push twice as many numbers through the exact same physical wires in the same amount of time. We can also fit twice as many numbers into the tiny SRAM caches. This keeps the math units constantly fed with data, preventing them from sitting idle and drastically pushing up our FLOPS.
