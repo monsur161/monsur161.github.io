@@ -2,7 +2,7 @@
 layout: post
 title: "Introductory JAX - Part 02: Lowering, StableHLO, and the Universal IR"
 short_title: "Introductory JAX - HLO"
-date: 2026-08-22 23:59:00
+date: 2026-08-22 12:00:00
 comments: true
 categories: [llm]
 ---
