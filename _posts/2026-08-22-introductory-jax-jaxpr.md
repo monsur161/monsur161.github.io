@@ -4,7 +4,7 @@ title: "Introductory JAX - Part 01: Tracers, Pure Functions, and JIT"
 short_title: "Introductory JAX - jaxpr"
 date: 2026-08-22
 comments: true
-categories: [llm]
+categories: [jax]
 ---
 
 > *"Where ignorance is bliss, 'tis folly to be wise."*
