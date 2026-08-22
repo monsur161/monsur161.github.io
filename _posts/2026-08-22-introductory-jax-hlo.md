@@ -4,7 +4,7 @@ title: "Introductory JAX - Part 02: Lowering, StableHLO, and the Universal IR"
 short_title: "Introductory JAX - HLO"
 date: 2026-08-22 12:00:00
 comments: true
-categories: [llm]
+categories: [jax]
 ---
 
 > *"Speak as you might to a young child, or a golden retriever. It wasn't brains that got me here, I can assure you that."*
