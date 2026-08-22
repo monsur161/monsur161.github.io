@@ -90,6 +90,7 @@ A good choice of mixed precision can be bfloat16 and float32. We'll get both spe
 When we talk about the bottleneck of data movement during GEMM, it isn't just moving data from the computer's system RAM to the GPU. The true bottleneck is the movement of data entirely **inside the GPU itself**. Before any math happens, our matrices ($X$ and $Y$) are pushed across the motherboard's PCIe bus into the GPU's memory (VRAM). But what happens next?
 
 **The Internal GPU Hierarchy**
+
 Once the data is inside VRAM, the GEMM operation starts. However, the hardware math units that do the actual multiplication (ALUs or Tensor Cores) cannot read directly from VRAM. The data must travel through a strict, physical pipeline:
 
 * **VRAM (HBM):** The main storage (e.g., 80GB on an NVIDIA A100). Huge, but relatively slow.
@@ -98,6 +99,7 @@ Once the data is inside VRAM, the GEMM operation starts. However, the hardware m
 * **Registers:** The absolute fastest memory slots, bolted directly to the math units.
 
 **The GEMM Data Cycle**
+
 When we earlier referred to "moving 4 elements," here is the exact journey each of those elements take:
 
 1. The GPU reads the elements from **VRAM** and pulls them into the ultra-fast **Shared Memory**.
