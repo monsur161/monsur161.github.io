@@ -180,6 +180,8 @@ So what did we do? We added `static_argnums=(0,)` as the argument to `jax.make_j
 
 Does this solve the problem of ignorance? **NO**. As long as we call it with the same 3.0, it will be fine. But calling it with some other value, say -3.0, will cause JAX to **recompile a brand new graph** from scratch, returning a *float32* static constant of value 3.0. If we pass 3.0 again later, yet another graph must be compiled, abandoning the previous one. This destroys the entire purpose of caching.
 
+Additionally, using the `static_argnums` argument inside `jax.make_jaxpr` only helps us visualize the trace. It has nothing to do with the actual purity of the main function. The underlying function is still fundamentally impure.
+
 So, to properly JIT-compile a function, we must make it *pure* and *JIT-friendly*. There are three common ways to apply it in Python.
 
 ### 1. Using `jax.jit` as a Decorator
