@@ -103,7 +103,7 @@ One thing to notice here is the `mhlo`. While the operations have been successfu
   * `%3 = stablehlo.multiply %0, %2` $\rightarrow$ Multiplies the first result by the third: $x^2 \cdot x^8 = \mathbf{x^{10}}$.
 
 
-  Because it rewrote the math to use pure multiplications, it completely bypassed a naive `pow(x, 10.0)` call. This eliminated the need to allocate a `10.0` constant and erased the need for a `broadcast_in_dim` operation entirely. The compiler optimized the code before XLA even touched it. And this is the **O** in **HLO**.
+  Because it rewrote the math to use pure multiplications, it completely bypassed a naive `pow(x, 10.0)` call. This eliminated the need to allocate a `10.0` constant and erased the need for a `broadcast_in_dim` operation entirely. The compiler optimized the code before XLA even touched it. And this is the *optimization* of **HLO**.
 
 
 * ```text
