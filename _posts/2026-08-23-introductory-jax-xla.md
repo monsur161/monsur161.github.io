@@ -212,7 +212,7 @@ Now, let's look directly at the calculation steps:
 
     * `kind=kLoop` $\rightarrow$ When XLA analyzes a graph, it has to decide how to map the math to the parallel threads of the GPU. As every operation inside this particular `%fused_computation` (exponentiation, addition, sine) is strictly **element-wise**, XLA decides to assign it the `kLoop` fusion strategy. Now, what is `kLoop`?
     
-    `kLoop` means that XLA has generated a massively parallel `for` loop. The GPU will spawn one thread for each element in the tensor, where:
+      `kLoop` means that XLA has generated a massively parallel `for` loop. The GPU will spawn one thread for each element in the tensor, where:
       
       * Thread 0 will grab index 0 of `%x.1` (the `1.0`), pull it into a register, run the math ($1.0^{10} + \ln(2)$), apply the sine, and write the answer to the output array.
       
