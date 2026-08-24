@@ -222,7 +222,21 @@ Now, let's look directly at the calculation steps:
     * `calls=%fused_computation` $\rightarrow$ This is the pointer. It tells the hardware to look up the `%fused_computation` block (identified by `%fused_computation (param_0.3: f32[2]) -> f32[2]`) and execute that entire sequence of mathematics as a single unit.
 
 
-That's enough for now. Let's wrap it up here.
+So, what does the execution table look like for this `%fused_computation` block? It is extremely simpler.
+
+| Operation | Action | Memory Transfer |
+| --- | --- | --- |
+| **Fused Kernel** | Read the entire array $x$ from VRAM into hardware registers. | 1 Read |
+|  | Compute $x^{10}$, add $\ln(2)$, and calculate the sine wave entirely inside the ultra-fast ALU registers. | 0 Memory Transfers |
+|  | Write the final output array back to VRAM. | 1 Write |
+| **Total Cost** |  | **1 Read, 1 Write** |
+
+In eager mode, we needed **4 Reads and 4 Writes** because Python forced the GPU to write `temp_pow`, `temp_log`, and `temp_add` to VRAM, only to immediately read them back again. But here, JIT-compilation allowed XLA to eliminate all those intermediate trips to the slow VRAM, reducing the entire pipeline to just **1 Read and 1 Write**.
+
+This brings us right back to the core purpose of XLA that we mentioned in the very first paragraph of this blog: fighting the memory wall. Yes, XLA absolutely optimized the math itself for our code, like pre-calculating the constant value of $\ln(2)$ to save hardware clock cycles. But the most massive performance gain comes from eliminating the constant data swings between VRAM and the hardware registers.
+
+
+That's enough for now. I have something relevant in my mind to write later. But that will be a separate blog.
 
 
 ## Extension: Layout Specifier
