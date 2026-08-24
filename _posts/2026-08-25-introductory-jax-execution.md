@@ -2,7 +2,7 @@
 layout: post
 title: "Introductory JAX - Part 04: LLVM, PTX, and the Hardware Handoff"
 short_title: "Introductory JAX - Execution"
-date: 2026-08-25 00:00:00
+date: 2026-08-24 00:00:00
 comments: true
 categories: [jax]
 ---
